@@ -12,11 +12,11 @@ public class Main {
 
         int option = 0;
         do{
-            printMenu();
+            PrintHelper.printMenu();
             option = scanner.nextInt();
 
             if(option == 1){
-                viewInventory(inventory);
+                PrintHelper.viewInventory(inventory);
             }
             else if(option == 2){
 
@@ -57,9 +57,9 @@ public class Main {
         System.out.println("Exiting system...");
     }
 
-    private static String addProduct(HashMap<String, Integer> inventory, String productName, int quantity) {
+    public static String addProduct(HashMap<String, Integer> inventory, String productName, int quantity) {
         if(quantity <= 0){
-            return "Invalid quantity";
+            return "Invalid quantity.";
         }
 
         //Check if product already existing
@@ -71,7 +71,7 @@ public class Main {
         return "Product added!";
     }
 
-    private static String checkProduct(HashMap<String, Integer> inventory, String productName) {
+    public static String checkProduct(HashMap<String, Integer> inventory, String productName) {
         String result;
         if(inventory.containsKey(productName)){
             result = productName + " is in stock: " + inventory.get(productName);
@@ -83,7 +83,7 @@ public class Main {
         }
     }
 
-    private static String updateProduct(HashMap<String, Integer> inventory, String productName) {
+    public static String updateProduct(HashMap<String, Integer> inventory, String productName) {
         Scanner scanner = new Scanner(System.in);
         String result;
 
@@ -103,13 +103,12 @@ public class Main {
             }
         }
         else{
-            result = productName + "is not in the inventory";
+            result = productName + " is not in the inventory.";
             return result;
         }
     }
 
-    private static String removeProduct(HashMap<String, Integer> inventory, String productName) {
-        Scanner scanner = new Scanner(System.in);
+    public static String removeProduct(HashMap<String, Integer> inventory, String productName) {
         String result;
 
         if(inventory.containsKey(productName)){
@@ -118,26 +117,8 @@ public class Main {
             return result;
         }
         else{
-            result = productName + "is not in the inventory";
+            result = productName + " is not in the inventory.";
             return result;
         }
-    }
-
-    private static void viewInventory(HashMap<String, Integer> products) {
-        System.out.println("Current Inventory:");
-        for(Map.Entry<String, Integer> entry : products.entrySet()){
-            System.out.println(entry.getKey() + " - " + entry.getValue() + " pcs");
-        }
-    }
-
-    private static void printMenu() {
-        System.out.println("--- Product Menu ---");
-        System.out.println("1. View Inventory");
-        System.out.println("2. Add Product");
-        System.out.println("3. Check Product");
-        System.out.println("4. Update Stock");
-        System.out.println("5. Remove Product");
-        System.out.println("6. Exit");
-        System.out.print("Choose an option: ");
     }
 }

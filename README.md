@@ -19,3 +19,9 @@
 
 ### Exit Output: <br>
 ![img_8.png](img_8.png)
+
+### Unit Test Output: <br>
+![img_9.png](img_9.png)
+
+### Unit Test Coverage Output: <br>
+![img_10.png](img_10.png)
